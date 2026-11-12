@@ -20,7 +20,7 @@ public class FiadoController {
         return fiado;
     }
 
-    @PostMapping("/nuevo")
+    @PostMapping("/crear")
     public Map<String, Object> registrarFiado(
             @RequestBody Map<String, Object> nuevo) {
         nuevo.put("id", System.currentTimeMillis());
