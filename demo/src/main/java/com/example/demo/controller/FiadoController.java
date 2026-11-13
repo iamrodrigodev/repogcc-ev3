@@ -1,31 +1,27 @@
 package com.example.demo.controller;
 
-import java.util.Date;
 import java.util.HashMap;
+import org.springframework.web.bind.annotation.*;
 import java.util.Map;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FiadoController {
-    @GetMapping("/fiado/{id}")
-    public Map<String,Object> consultarFiado(@PathVariable(name="id") int id) {
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("id", id);
-        map.put("cliente", "Juan Pérez");
-        map.put("producto", "Arroz");
-        map.put("monto", 25.50);
-        map.put("estado", "Pendiente");
-        return map;
+
+    @GetMapping("/{id}")
+    public Map<String, Object> consultarFiado(@PathVariable int id) {
+        Map<String, Object> fiado = new HashMap<>();
+        fiado.put("id", id);
+        fiado.put("cliente", "Juan Pérez");
+        fiado.put("producto", "Arroz");
+        fiado.put("monto", 25.50);
+        fiado.put("estado", "Pendiente");
+        return fiado;
     }
 
-    @PostMapping("/fiado/crear")
-    public Map<String,Object> registrarFiado(@RequestBody Map<String,Object> nuevo) {
-        Date ahora = new Date();
-        nuevo.put("id", ahora.getTime());
+    @PostMapping("/crear")
+    public Map<String, Object> registrarFiado(
+            @RequestBody Map<String, Object> nuevo) {
+        nuevo.put("id", System.currentTimeMillis());
         nuevo.put("estado", "Pendiente");
         return nuevo;
     }

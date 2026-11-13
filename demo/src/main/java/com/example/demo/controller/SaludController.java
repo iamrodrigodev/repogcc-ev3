@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/salud")
 public class SaludController {
     @GetMapping
-    public Map<String, Object> saludar() {
+    public Map<String, Object> consultarSalud() {
         return Map.of("mensaje", "repogcc-ev3 funcionando correctamente");
     }
 }
