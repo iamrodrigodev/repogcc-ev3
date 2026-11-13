@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/fiados")
 public class FiadoController {
 
     @GetMapping("/{id}")
@@ -18,7 +19,7 @@ public class FiadoController {
         return fiado;
     }
 
-    @PostMapping("/crear")
+    @PostMapping
     public Map<String, Object> registrarFiado(
             @RequestBody Map<String, Object> nuevo) {
         nuevo.put("id", System.currentTimeMillis());
